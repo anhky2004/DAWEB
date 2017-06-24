@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Đưa sản phẩm lên đấu giá</title>
+	<script type="text/javascript" src="public/assests/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="public/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="public/assests/css/anhdungstyle.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="public/assests/js/anhdung.js"></script>
+</head>
+<body>
+	<div class="container" style="padding-top: 30px;">
+		<section class="panel panel-default">
+			<div class="panel-heading"> 
+			<h3 class="panel-title">Sản phẩm đấu giá</h3> 
+			</div> 
+			<div class="panel-body">
+
+				<form action="designer-finish.html" class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Loại đấu giá</label>
+						<div class="col-sm-9">
+							<label class="radio-inline">
+								<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Thuận
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nghịch
+							</label>
+						</div>
+					</div> <!-- form-group // -->
+
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Tên sản phẩm</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="name" id="name" placeholder="Tên sản phẩm">
+						</div>
+					</div> <!-- form-group // -->
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Giá khởi điểm</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="name" id="name" placeholder="Giá khởi điểm">
+						</div>
+					</div> <!-- form-group // -->
+					<div class="form-group">
+						<label for="about" class="col-sm-3 control-label">Mô tả sản phẩm</label>
+						<div class="col-sm-9">
+							<textarea class="form-control"></textarea>
+						</div>
+					</div> <!-- form-group // -->
+					<div class="form-group">
+						<label for="qty" class="col-sm-3 control-label">Giá mua ngay</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="qty" id="qty" placeholder="Giá mua ngay">
+						</div>
+					</div> <!-- form-group // -->
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Hạn đấu giá</label>
+						<div class="col-sm-3"> 
+							<label class="control-label small" for="date_start">Thời điểm bắt đầu: </label>
+							<input type="text" class="form-control" name="date_start" id="date_start" placeholder="Thời điểm bắt đầu">
+						</div>
+						<div class="col-sm-3">   
+							<label class="control-label small" for="date_finish">Thời điểm kết thúc:</label>
+							<input type="text" class="form-control" name="date_finish" id="date_finish" placeholder="Thời điểm kết thúc">
+						</div>
+					</div> <!-- form-group // -->
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Hình ảnh</label>
+						<div class="col-sm-3">
+							<label class="control-label small" for="file_img">Ảnh chính (jpg/png):</label> <input type="file" name="file_img">
+						</div>
+						<div class="col-sm-3">
+							<label class="control-label small" for="file_img">Các ảnh khác</label>  <input type="file" name="file_archive">
+						</div>
+					</div> <!-- form-group // -->
+					<div class="form-group">
+						<label for="tech" class="col-sm-3 control-label">Loại sản phẩm</label>
+						<div class="col-sm-3">
+							<select class="form-control">
+								<option value="">Máy tính</option>
+								<option value="texnolog2">Túi xách</option>
+								<option value="texnolog3">Tai nghe</option>
+							</select>
+						</div>
+					</div> <!-- form-group // -->
+					<hr>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Đưa sản phẩm lên sàn đấu giá</button>
+						</div>
+					</div> <!-- form-group // -->
+				</form>
+
+			</div><!-- panel-body // -->
+		</section><!-- panel// -->
+	</div> <!-- container// -->
+	<div class="footer">
+            <div class="footer-content container">
+                <section class="taka-section">
+                    <h2 class="taka-section__heading">TAKA VIỆT NAM - ĐẤU GIÁ CÁC MẶT HÀNG ĐIỆN TỬ</h2>
+                    <p class="taka-section__content">
+                        Taka hiện đang là dịch vụ đấu giá hàng đầu tại Việt Nam. Đến với Taka, bạn sẽ có những trải nghiệm đầy thú vị và an toàn khi mua, bán, đấu giá hàng trên website trực tuyến. Hãy trở thành một trong hàng triệu người dùng Taka để nhận ngay hàng ngàn ưu đãi hấp dẫn! Với chính sách Taka Đảm Bảo, bạn sẽ nhận được hàng, hoặc được hoàn lại tiền! Hãy gia nhập cộng đồng Taka và trải nghiệm mua bán ngay hôm nay!
+                    </p>
+                </section>
+                <section class="taka-section">
+                    <h2 class="taka-section__heading">THỎA THÍCH LỰA CHỌN SẢN PHẨM CÔNG NGHỆ</h2>
+                    <p class="taka-section__content">
+                        Hãy tham gia Taka, trang đấu giá trực tuyến tiện lợi và an toàn nhất để dễ dàng tìm thấy mọi thứ bạn cần ở mức giá tốt nhất.
+                        Taka còn tích hợp các tính năng của mạng xã hội, giúp bạn liên tục cập nhập thông tin và xu hướng mới từ bạn bè và các thành viên bạn theo dõi trong cộng đồng.
+                    </p>
+                    <p class="taka-section__content">
+                        Để yên tâm mua sắm, bạn chỉ cần tham khảo thông tin “Đánh giá từ người dùng khác”
+                        và tìm được người bán hàng đáng tin cậy. Ngoài ra, chính sách Taka Đảm Bảo sẽ giúp bạn nhận được hàng, hoặc được hoàn lại tiền.
+                    </p>
+                </section>
+            </div>
+            
+            <div class="footer_legal">
+                <div class="container">
+                    <div class="policies">
+                        <div class="policy-item">
+                            <a class="policy-link" href="#">
+                                <div class="policy-icon item_icon_privacy"></div><span>Chính sách bảo mật</span>
+                            </a>
+                        </div>
+                        <div class="policy-item">
+                            <a class="policy-link" href="#">
+                                <div class="policy-icon item_icon_tos"></div><span>Quy chế hoạt động</span>
+                            </a>
+                        </div>
+                        <div class="policy-item">
+                            <a class="policy-link" href="#">
+                                <div class="policy-icon item_icon_shipping"></div><span>Chính sách vận chuyển</span>
+                            </a>
+                        </div>
+                        <div class="policy-item">
+                            <a class="policy-link" href="#">
+                                <div class="policy-icon item_icon_violation"></div><span>CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="company">Công ty TNHH TAKA</div>
+                    <div class="detail">Địa chỉ: Tầng 1, tòa nhà Khoa học tự nhiên, số 444, phố Nguyễn Văn Cừ, quận 5, TpHCM. Tổng đài hỗ trợ: 0962940509 - Email: 1312092@student.hcmus.edu.vn</div>
+                    <div class="detail">Mã số doanh nghiệp: 999999999 do Sở Kế hoạch &amp; Đầu tư tự nhiên  cấp lần đầu ngày 24/8/1995</div>
+                    <div class="detail">© 2099 - Bản quyền thuộc về Công ty TNHH Toko</div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

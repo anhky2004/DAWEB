@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assests/js/xuly.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/assests/css/quangdungStyle.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row" id="customword">
+			<div class="col-md-12">
+				<h2 id="dangnhap">Thông tin đăng nhập</h2>
+			</div>
+		</div>
+		<div class="row" id="customworddangnhap">
+		
+			<div class="col-md-5 col-sm-12 col-xs-12">
+				<form action="" name="formdangnhap" method="post" id="formdangnhap" onsubmit="return valadateFormLogin()">
+				{{#if error}}
+				 <strong class="loiemail" id="loiemail">{{error}}</strong>
+				 {{/if}}
+				  <div class="input-group myinput">
+				    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+				  </div>
+				   <p class="baoloi" id="loitendangnhap">Vui lòng nhập email để đăng nhập</p>
+				  <div class="input-group myinput">
+				    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				    <input id="password" type="password" class="form-control" name="password" placeholder="Mật khẩu">
+				  </div>
+				  <p class="baoloi" id="loimatkhau">Vui lòng nhập mật khẩu</p>
+				  <a href="#" class="quenmatkhau">Quên mật khẩu</a> 
+				  <div class="checkbox tudongdangnhap">
+					  <label><input type="checkbox" value="cbquenmatkhau" name="tudongdangnhap">Tự động đăng nhập</label>
+				  </div>
+				  <button type="submit" class="btn btn-primary" id="bntdangnhap">Đăng Nhập</button>	
+				</form>
+			</div>
+			<div class="col-md-6 col-sm-12 col-xs-12">
+				<p id="fist">Hoặc có thể đăng nhập với tài khoản mạng xã hội mà không cần đăng ký</p>
+				<a href="#"><i class="fa fa-facebook-official fa-2x" aria-hidden="true" id="logoface" ></i><span class="dnnhanh">Facebook</span></a>
+				<span id="hoac">hoặc</span>
+				<a href="#"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true" id="logogg"></i><span class="dnnhanhgg">Google</span></a>
+				<p id="dangky"><i class="fa fa-pencil-square" aria-hidden="true" id="dk"></i><span id="dkmoi">Đăng ký mới</span></p>
+				<p>Hãy bắt đầu ngay bây giờ. Đăng ký nhanh chóng và dễ dàng trên TAKA.VN</p>
+				<button type="button" class="btn btn-primary" id="dangky"><a href="./register">Đăng Ký</a></button>	
+			</div>
+		</div>
+		<div class="row" id="cacbuocmuahang">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-md-3">
+					<i class="fa fa-pencil-square-o fa-4x" aria-hidden="true" id="buoc1"></i>
+				</div>
+				<div class="col-md-9">
+					<p class="buoc">Bước 1</p>
+					<p class="buoc">Người mua chọn mặt hàng cần mua</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-md-3">
+					<i class="fa fa-money fa-4x" aria-hidden="true" id="buoc2"></i>
+				</div>
+				<div class="col-md-9">
+					<p class="buoc">Bước 2</p>
+					<p class="buoc">Tiến hành đấu giá hoặc mua ngay</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-md-3">
+					<i class="fa fa-credit-card fa-4x" aria-hidden="true" id="buoc3"></i>
+				</div>
+				<div class="col-md-9">
+					<p class="buoc">Bước 3</p>
+					<p class="buoc">Đợi kết quả và thanh toán</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-md-3">
+					<i class="fa fa-plane fa-4x" aria-hidden="true" id="buoc4"></i>
+				</div>
+				<div class="col-md-9">
+					<p class="buoc">Bước 4</p>
+					<p class="buoc">TAKA.VN giao hàng tận nhà</p>
+				</div>
+			</div>
+		</div> 
+	</div>
+</body>
+</html>

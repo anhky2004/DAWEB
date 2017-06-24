@@ -1,0 +1,242 @@
+a {
+	color: #fff;
+}
+
+a:focus, a:hover {
+	text-decoration: none;
+}
+
+.adli {
+	position: relative;
+	display: block;
+}
+
+.adli > .dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.navbar {
+	height: 90px; 
+	background-color: #85db18; 
+	color:#FFFFFF;
+}
+
+.flipkart-navbar-input {
+    padding: 11px 16px;
+    border-radius: 2px 0 0 2px;
+    border: 0 none;
+    outline: 0 none;
+    font-size: 15px;
+    color: black;
+}
+
+.flipkart-navbar-button {
+    background-color: #ffe11b;
+    border: 1px solid #ffe11b;
+    border-radius: 0 2px 2px 0;
+    color: #565656;
+    padding: 10px 0;
+    height: 43px;
+    cursor: pointer;
+}
+
+.adcenter {
+	display:flex; 
+	align-items:center;
+}
+.dmsanpham{
+    margin-top: 100px;
+}
+#tatca{
+    color: black;
+    float: right;
+}
+#tatca:hover{
+    color: blue;
+}
+.tatca{
+     color: black;
+}
+.tatca:hover{
+    color: blue;
+}
+body{
+    color: black;
+}
+.taka{
+    color: blue;
+}
+#customword{
+    color: black;
+}
+#dangnhap{
+    margin-top: 30px;
+}
+#customworddangnhap{
+    color: black;
+    border: solid 0.3px #dddddd;
+    padding-bottom: 50px;
+    background-color: #f2f2f2;
+    margin-bottom: 30px;
+}
+.myinput{
+    margin-top: 40px;
+}
+.quenmatkhau{
+    color: blue;
+    font-size: 12px;
+    padding-top: 15px;
+}
+.tudongdangnhap{
+    font-size: 12px;
+}
+#logoface{
+    color: #4b64a5;
+}
+.dnnhanh{
+    font-size: 18px;
+    color: #6076b0;
+    font-weight: bold;
+}
+.dnnhanhgg{
+    font-size: 18px;
+    color: #de4a32;
+    font-weight: bold;
+}
+#logogg{
+    color: #de4a32;
+}
+#hoac{
+    font-size: 12px;
+    font-style: italic;
+    color: #a0a0a0;
+}
+#fist{
+    margin-top: 15px;
+}
+#dkmoi{
+    font-weight: bold;
+    color: #555555;
+    margin-left: 5px;
+}
+#dk{
+    color: #359acc;
+}
+#dangky{
+    margin-top: 42px;
+}
+#dangnhap{
+    font-weight: bold;
+    color: #555555;
+}
+#cacbuoc{
+   color: #359acc;
+}
+#buoc1{
+    color: #ff3413;
+}
+#buoc2{
+    color: #621af2;
+}
+.buoc{
+    color: black;
+}
+#cacbuocmuahang{
+    background-color: #eeeeee;
+    padding: 40px 0px 40px 0px;
+}
+#buoc3{
+     color: #337ab7;
+}
+#buoc4{
+    color: #85db18;
+}
+.footer{
+    margin-top: 60px;
+    border-top: solid 1px  #eeeeee;
+}
+.tieude{
+    margin-top: 15px;
+    font-weight: bold;
+}
+.noidung{
+    font-size: 12px;
+    color: #707070;
+}
+.footercontact{
+    background-color: #eeeeee;
+}
+.policy-item {
+    padding: 0 25px;
+    padding: 0 2.5rem;
+    border-right: 1px solid rgba(0,0,0,.09);
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #707070;
+}
+.policy-link {
+    text-decoration: none;
+    color: rgba(0,0,0,.8);
+    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: rgba(0,0,0,.54);
+}
+.policy-icon{
+    width: 12px;
+    width: 1.2rem;
+    height: 12px;
+    height: 1.2rem;
+    margin-right: 5px;
+    margin-right: .5rem;
+    background-size: cover;
+}
+.item_icon_privacy {
+    background-image: url(../Images/privacy.png);
+}
+.item_icon_tos {
+    background-image: url(../Images/tos.png);
+}
+.item_icon_shipping {
+    background-image: url(../Images/shipping.png);
+}
+
+.item_icon_violation {
+    background-image: url(../Images/violation.png);
+}
+.company {
+    text-align:center;
+}
+.detail {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    margin-top: .8rem;
+}
+#ftcompany{
+     color: #707070;
+     margin-bottom: 30px;
+}
+.baoloi{
+    color: red;
+    font-size: 12px;
+}
+#divdangky{
+    margin-top: 150px;
+    text-align: center;
+    font-size: 30px;
+}
+.loiemail{
+    margin-bottom: 15px;
+    color: red;
+}
+#loiemail{
+    
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>category index</title>
+		<link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="container">
+			<h1>Category List</h1>
+			<div class="row">
+				<form method="post" action="/category/delete" id="frmDeleteCategory">
+					<input type="hidden" name="catId" id="txtDelCatId">
+				</form>
+				<div class="col-md-4">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>name</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each categories }}
+							<tr>
+								<td>{{CatID}}</td>
+								<td>{{CatName}}</td>
+								<td>
+									<a href="/category/edit?id={{CatID}}" class="btn btn-xs btn-primary" title="edit">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
+									<a href="javascript:;" class="btn btn-xs btn-danger removeCategory" data-id="{{CatID}}">
+										<span class="glyphicon glyphicon-remove"></span>
+									</a>
+								</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<a href="/category/add" class="btn btn-primary" title="add">
+				<span class="glyphicon glyphicon-plus"></span>
+			</a>
+		</div>
+	</body>
+	<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$('.removeCategory').on('click', function() {
+			var id = $(this).data('id');
+			$('#txtDelCatId').val(id);
+			$('#frmDeleteCategory').submit();
+		});
+	</script>
+</html>

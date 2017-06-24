@@ -1,0 +1,61 @@
+<div class="navbar navbar-fixed-top">
+	<div class="container">
+		<div class="row adcenter">
+			<div class="col-md-2">
+				<a href="/"><img src="\assests\Images\logo_taka.png"></a>
+			</div>
+			<div class="col-md-7">
+				<form action="/search/tukhoa" method="get" role="search">
+			 
+				<div class="form-group">
+					<input id="keySearch" class="flipkart-navbar-input col-md-11" type="text" name ="key" placeholder="Tìm sản phẩm bạn mong muốn" />
+				</div>					
+				<button id="btnSearch" type="submit" class="flipkart-navbar-button col-md-1">
+			</form>
+				<svg width="15px" height="15px">
+					<path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
+				</svg>
+			</button>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<ul class="nav navbar-nav navbar-right">
+                {{#if layoutModels.isLogged }}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Hi, <b>{{ layoutModels.curUser.hoten }}</b> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/account/profile">Thông tin cá nhân</a></li>
+                        <li><a id="logoutLink" href="/account/logout">Thoát</a></li>
+                    </ul>
+                </li>
+                {{else}}
+                <li class="adli dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="autochange">
+					Tài Khoản<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="/account/login" id="loginLink">Đăng nhập</a>
+							<a href="/account/register" id="registerLink">Tạo tài khoản</a>
+						</li>
+					</ul>
+				</li>
+                {{/if}}
+            </ul>
+			</div>
+		</div>
+		<div class="row adcenter">
+			<div class="col-md-2"></div>
+			<div class="col-md-3 nvsp" id="duasplen"><i class="fa fa-cogs fa-1x"></i>
+				Đưa sản phẩm lên đấu giá</div>
+				<div class="col-md-3 nvsp" id="spdone"><i class="fa fa-gift fa-1x"></i>
+					Sản phẩm đấu giá xong</div>
+					<div class="col-md-2 nvsp" id="mylist"><i class="fa fa-shopping-cart fa-1x"></i>
+						Sản phẩm của tôi</div>
+					<div class="col-md-3 nvsp" id="hotrokh"><i class="fa fa-phone fa-1x"></i>
+					Hỗ trợ khách hàng</div>
+		</div>	
+	</div>
+</div>

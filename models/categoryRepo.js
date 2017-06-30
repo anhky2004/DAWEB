@@ -15,7 +15,7 @@ exports.loadAll = function() {
 }
 
 exports.loadDetail = function(id) {
-	var d = q.defer();
+	var d = Q.defer();
 
     var obj = {
         CatID: id

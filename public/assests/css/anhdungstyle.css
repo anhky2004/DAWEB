@@ -4,6 +4,7 @@ a {
 
 a:focus, a:hover {
 	text-decoration: none;
+    color: white;
 }
 
 .adli {
@@ -179,7 +180,8 @@ a:focus, a:hover {
 .product-item .image img {
     border: none;
     position: relative;
-    width: 100%;
+    width: 200px;
+    height: 150px;
     max-width: 175px;
 }
 
@@ -390,4 +392,8 @@ a:focus, a:hover {
     margin-bottom: 8px;
     text-decoration: line-through;
     color: #cacaca;
+}
+
+.hoveer:hover{
+    color: white;
 }

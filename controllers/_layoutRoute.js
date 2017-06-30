@@ -20,6 +20,7 @@ module.exports = function(req, res, next) {
             categories: catList,
             isLogged: req.session.isLogged,
             curUser: req.session.user,
+            isadmin: req.session.roll
         };
         console.log("hihihihihih");
         next();

@@ -1,4 +1,10 @@
 $(document).ready(function(){
+
+    var p = $(".priceNow").text();
+    var q = parseFloat(p);
+    var h = q * 10 / 100;
+    $("#txtPrice").val(q+h); 
+    
     $('.hinhanh a').fancybox();
     
     $('ul.tabs li').click(function(){
@@ -47,63 +53,33 @@ $(document).ready(function(){
 });
 
 
-    function startTime(){
+function startTime(){
+    var c = $('#timefinish').val();
     var a = new Date("May 15, 2017 10:30:00");
-    var b = new Date("May 25, 2017 15:30:00");
+    var b = new Date(c);
     var today = new Date();
-    var h = parseInt(today.getHours());
-    var m = parseInt(today.getMinutes());
-    var s = parseInt(today.getSeconds());
-    var d = parseInt(today.getDate());
+    var m = b-today;
+    console.log(m);
+      if(m>0){
+      var v = m/1000;
+      var seconds = parseInt(v); 
+      var hours   = Math.floor(seconds / 3600);
+      var minutes = Math.floor((seconds - (hours * 3600)) / 60);
+      var seconds = seconds - (hours * 3600) - (minutes * 60);
+      if (hours   < 10) {hours   = "0"+hours;}
+      if (minutes < 10) {minutes = "0"+minutes;}
+      if (seconds < 10) {seconds = "0"+seconds;}
 
-    var h1= parseInt(b.getHours());
-    var m1 = parseInt(b.getMinutes());
-    var s1 = parseInt(b.getSeconds());
-    var d1 = parseInt(b.getDate());
-    var s2,m2,h2;
-     if(d1 >= d){
-       if(h1>=h){
-            if(m1>=m){
-                if(s1>=s){
-                    s2=s1-s;
-                    m2=m1-m;
-                    h2=h1-h + (d1-d)*24;
-                }
-                else{
-                    s2=s1-s+60;
-                    m2=m1-m-1;
-                    h2=h1-h + (d1-d)*24;
-                }
-            }
-            else{
-                s2=s1-s+60;
-                m2=m1-m-1 +60;
-                h2=h1-h -1 + (d1-d)*24;
-            }
-        }
-     else{
-        s2=s1-s+60;
-        m2=m1-m-1 +60;
-        h2=h1-h -1 +(d1-d)*24 -1;    
-       }
-    if(h2>=0){
-        m2 = checkTime(m2);
-        s2 = checkTime(s2);
-        $('#demo').html("Thời gian còn lại: " +h2 + ":" + m2 + ":" + s2);    
-        var t = setTimeout(function(){ startTime() }, 500);  
+      $('#demo').html("Thời gian còn lại: " +hours +":" + minutes +":" + seconds);    
+        var t = setTimeout(function(){ startTime() }, 500);
     }
-   else{
-     $('#demo').html("Đã hết thời gian đặt hàng");   
-     $('#dathang').hide();
-   }   
-    }
+ else{
+    $('#demo').html("Đã hết thời gian đặt hàng");   
+    $('#dathang').hide();
+ }
 
-    else{
-         $('#demo').html("Đã hết thời gian đặt hàng");   
-         $('#dathang').hide();
-       }
-    }
-
+ 
+}
 
     function checkTime(i) {
         if (i < 10) {
@@ -112,4 +88,8 @@ $(document).ready(function(){
         return i;
     }
     
-	window.onload = startTime;
+
+
+    
+
+  window.onload = startTime;

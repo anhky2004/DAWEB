@@ -1,0 +1,50 @@
+{{#section 'js'}}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.removeUser').on('click', function() {
+      var id = $(this).data('id');
+      $('#txtDelUser').val(id);
+      $('#frmDeleteUser').submit();
+    });
+  });
+  </script>
+{{/section}}
+
+
+<div class="content" style="display: block;">
+    <div style="padding-top: 115px;" class="container">
+   {{#each list }}
+    <form method="post" action="/account/xoauser" id="frmDeleteUser">
+    <input type="hidden" name="id" id="txtDelUser">
+    </form>
+    {{/each}}
+
+        <div class="container">
+          <table class="table ">
+            <thead>
+            <tr>
+              <th>Họ Tên</th>
+              <th>Ngày Sinh</th>
+              <th>Roll</th>
+              <th>Xóa User</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each list }}
+            <tr>
+              <td>{{hoten}}</td>
+              <td>{{email}}</td>
+              <td>{{roll}}</td>
+              <td class="xoa"><a href="javascript:;" class="btn btn-xs btn-danger removeUser" data-id="{{id}}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </a></td>
+            </tr>
+            {{/each}}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div> <!---end content-->
+
+

@@ -9,6 +9,7 @@ var express = require('express'),
     path = require('path'),
     wnumb = require('wnumb'),
     morgan = require('morgan'),
+    html = require('html-entities'),
     mustache = require('mustache'),
     moment = require('moment'),
     wnumb = require('wnumb'),
@@ -16,7 +17,7 @@ var express = require('express'),
     handle404 = require('./middle-wares/handle-404'),
     homeController = require('./controllers/homeController'),
     categoryController = require('./controllers/categoryController'),
-    productController = require('./controllers/productController');
+    productController = require('./controllers/productController'),
     accountController = require('./controllers/accountController');
     var layoutRoute = require('./controllers/_layoutRoute');
 
@@ -80,4 +81,4 @@ app.use('/product', productController);
 app.use('/account', accountController);
 app.use(handle404);
 
-app.listen(3002);
+app.listen(3004);

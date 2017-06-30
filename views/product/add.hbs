@@ -4,94 +4,115 @@
 	<title>Đưa sản phẩm lên đấu giá</title>
 	<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assests/js/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript">
+		/*CKEDITOR.replace( 'fullDes' );*/
+	$(document).ready(function() {
+		
+		$('.addPro').on('click', function() {
+			var a =$('#myselect option:selected').val();
+			var b= $('#valueCate');
+			b.val(a);
+			$('#addDetal').submit();
+		});
+	});		
+	</script>
+
 	<link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="container" style="padding-top: 10px;">
+		
 		<section class="panel panel-default">
 			<div class="panel-heading"> 
 			<h3 class="panel-title">Sản phẩm đấu giá</h3> 
 			</div> 
 			<div class="panel-body">
 
-				<form action="designer-finish.html" class="form-horizontal" role="form">
-					<div class="form-group">
-						<label for="name" class="col-sm-3 control-label">Loại đấu giá</label>
-						<div class="col-sm-9">
-							<label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Thuận
-							</label>
-							<label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nghịch
-							</label>
-						</div>
-					</div> <!-- form-group // -->
+				<form action="" class="form-horizontal" role="form" method="post" id="addDetal">
 
 					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Tên sản phẩm</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name" placeholder="Tên sản phẩm">
+							<input type="text" class="form-control" name="proName" id="proName" placeholder="Tên sản phẩm">
+						</div>
+					</div> 
+					
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Giới thiệu sản phẩm</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="tinyDes" id="tinyDes" placeholder="Tên sản phẩm">
+						</div>
+					</div> 
+					<div class="form-group">
+						<label for="about" class="col-sm-3 control-label">Mô tả sản phẩm</label>
+						<div class="col-sm-9">
+							<textarea class="form-control" name="fullDes" id="fullDes" cols="80" rows="7">
+								
+							</textarea>
+								 <script>	 
+						           CKEDITOR.replace( 'fullDes' );	 
+						       	</script> 
 						</div>
 					</div> <!-- form-group // -->
 					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Giá khởi điểm</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name" placeholder="Giá khởi điểm">
+							<input type="number" class="form-control" name="price" id="price" placeholder="Giá khởi điểm">
 						</div>
 					</div> <!-- form-group // -->
 					<div class="form-group">
-						<label for="about" class="col-sm-3 control-label">Mô tả sản phẩm</label>
-						<div class="col-sm-9">
-							<textarea class="form-control"></textarea>
-						</div>
-					</div> <!-- form-group // -->
-					<div class="form-group">
-						<label for="qty" class="col-sm-3 control-label">Giá mua ngay</label>
+						<label for="tech" class="col-sm-3 control-label">Loại sản phẩm</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" name="qty" id="qty" placeholder="Giá mua ngay">
+							<select class="form-control" id="myselect" name="myselect">
+							{{#each layoutVM.categories }}
+								<option value="{{CatID}}">{{CatName}}</option>
+							{{/each}}
+							</select>
 						</div>
 					</div> <!-- form-group // -->
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Hạn đấu giá</label>
 						<div class="col-sm-3"> 
 							<label class="control-label small" for="date_start">Thời điểm bắt đầu: </label>
-							<input type="text" class="form-control" name="date_start" id="date_start" placeholder="Thời điểm bắt đầu">
+							<input type="date" class="form-control" name="timeStart" id="timeStart" placeholder="Thời điểm bắt đầu">
 						</div>
 						<div class="col-sm-3">   
 							<label class="control-label small" for="date_finish">Thời điểm kết thúc:</label>
-							<input type="text" class="form-control" name="date_finish" id="date_finish" placeholder="Thời điểm kết thúc">
+							<input type="date" class="form-control" name="timeFinish" id="timeFinish" placeholder="Thời điểm kết thúc">
 						</div>
 					</div> <!-- form-group // -->
 					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Hình ảnh</label>
 						<div class="col-sm-3">
-							<label class="control-label small" for="file_img">Ảnh chính (jpg/png):</label> <input type="file" name="file_img">
+							<input type="text" class="form-control" name="image1" id="image1" placeholder="link ảnh 1">
 						</div>
+						<div class="col-sm-3">						
+							<input type="text" class="form-control" name="image2" id="image2" placeholder="link ảnh 2">
+						</div>
+
 						<div class="col-sm-3">
-							<label class="control-label small" for="file_img">Các ảnh khác</label>  <input type="file" name="file_archive">
+							<input type="text" class="form-control" name="image3" id="image3" placeholder="link ảnh 3">
 						</div>
 					</div> <!-- form-group // -->
 					<div class="form-group">
-						<label for="tech" class="col-sm-3 control-label">Loại sản phẩm</label>
-						<div class="col-sm-3">
-							<select class="form-control">
-								<option value="">Máy tính</option>
-								<option value="texnolog2">Túi xách</option>
-								<option value="texnolog3">Tai nghe</option>
-							</select>
-						</div>
-					</div> <!-- form-group // -->
+							<input id="txtSeller" name="seller" value="{{layoutModels.curUser.hoten}}" type="hidden">
+					</div>
+					<div class="form-group">
+							<input id="valueCate" name="catID" type="hidden">
+					</div>
 					<hr>
-					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-9">
-							<button type="submit" class="btn btn-primary">Đưa sản phẩm lên sàn đấu giá</button>
-						</div>
-					</div> <!-- form-group // -->
 				</form>
 
+				<div class="col-sm-offset-6 col-sm-9">
+					<a href="javascript:;" class="btn btn-xs btn-primary addPro">
+						<span>Đưa sản phẩm lên sàn đấu giá</span>
+					</a>
+				</div>
 			</div><!-- panel-body // -->
 		</section><!-- panel// -->
+
 	</div> <!-- container// -->
 </body>
 </html>

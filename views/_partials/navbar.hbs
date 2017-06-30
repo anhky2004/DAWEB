@@ -1,3 +1,5 @@
+
+
 <div class="navbar navbar-fixed-top">
 	<div class="container">
 		<div class="row adcenter">
@@ -6,10 +8,10 @@
 			</div>
 			<div class="col-md-7">
 				<form action="/search/tukhoa" method="get" role="search">
-			 
+
 				<div class="form-group">
 					<input id="keySearch" class="flipkart-navbar-input col-md-11" type="text" name ="key" placeholder="Tìm sản phẩm bạn mong muốn" />
-				</div>					
+				</div>
 				<button id="btnSearch" type="submit" class="flipkart-navbar-button col-md-1">
 			</form>
 				<svg width="15px" height="15px">
@@ -23,10 +25,16 @@
                 {{#if layoutModels.isLogged }}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Hi, <b>{{ layoutModels.curUser.hoten }}</b> <span class="caret"></span>
+                        Hi, <b id="currentUser">{{ layoutModels.curUser.hoten }}</b> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/account/profile">Thông tin cá nhân</a></li>
+						{{#if layoutModels.isadmin }}
+								<li><a href="/account/listuser">Quản lý user</a></li>
+								<li><a href="/category">Quản lý danh mục sản phẩm</a></li>
+						{{/if}}
+                        <li><a href="/account/profile/{{ layoutModels.curUser.hoten }}">Thông tin cá nhân</a></li>
+                        <li><a href="/product/trade/{{ layoutModels.curUser.hoten }}" >Sản phẩm đang đấu giá</a></li>
+                        <li><a href="/product/finishtrade/{{ layoutModels.curUser.hoten }}" class="hoveer">Kết quả sản phẩm user bán</a></li>
                         <li><a id="logoutLink" href="/account/logout">Thoát</a></li>
                     </ul>
                 </li>
@@ -48,14 +56,26 @@
 		</div>
 		<div class="row adcenter">
 			<div class="col-md-2"></div>
+			   {{#if layoutModels.isLogged }}
 			<div class="col-md-3 nvsp" id="duasplen"><i class="fa fa-cogs fa-1x"></i>
 				Đưa sản phẩm lên đấu giá</div>
-				<div class="col-md-3 nvsp" id="spdone"><i class="fa fa-gift fa-1x"></i>
-					Sản phẩm đấu giá xong</div>
-					<div class="col-md-2 nvsp" id="mylist"><i class="fa fa-shopping-cart fa-1x"></i>
-						Sản phẩm của tôi</div>
-					<div class="col-md-3 nvsp" id="hotrokh"><i class="fa fa-phone fa-1x"></i>
+				{{else}}
+				<div class="col-md-3 nvsp"><i class="fa fa-cogs fa-1x"></i>
+				<a href="/account/login">Đưa sản phẩm lên đấu giá</a></div>
+				{{/if}}
+				 {{#if layoutModels.isLogged }}
+				<div class="col-md-3 nvsp" ><i class="fa fa-gift fa-1x"></i>
+					<a href="/product/result/{{ layoutModels.curUser.hoten}}">Sản phẩm user đấu giá thắng</a></div>
+				{{/if}}
+				 {{#if layoutModels.isLogged }}
+					<div class="col-md-3 nvsp" id="mylist"><i class="fa fa-shopping-cart fa-1x"></i>
+						<a href="/account/mytrader/{{ layoutModels.curUser.hoten}}">Sản phẩm user đang đấu giá</a></div>
+					{{else}}
+					<div class="col-md-3 nvsp" id="mylist"><i class="fa fa-shopping-cart fa-1x"></i>
+						<a href="/account/login">Sản phẩm đang đấu giá của tôi</a></div>
+					{{/if}}
+					<div class="col-md-2 nvsp" id="hotrokh"><i class="fa fa-phone fa-1x"></i>
 					Hỗ trợ khách hàng</div>
-		</div>	
+		</div>
 	</div>
 </div>

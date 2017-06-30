@@ -3,17 +3,11 @@ $( document ).ready(function() {
 		window.location.assign("/product/add");
 	});
 
-	$("#spdone").click(function() {
-		window.location.assign("/product/result");
-	});
 	
     $("#hotrokh").click(function() {
         $('body').animate({scrollTop: $('.footer').offset().top}, 1000);
     });
 
-    $("#mylist").click(function() {
-        window.location.assign("/account/mylist");
-    });
 
     $(".bid").click(function() {
     	window.location.assign("productDetail.html");

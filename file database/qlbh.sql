@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
@@ -85,8 +85,25 @@ CREATE TABLE `products` (
   `FullDes` text COLLATE utf8_unicode_ci NOT NULL,
   `Price` int(11) NOT NULL,
   `CatID` int(11) NOT NULL,
-  `Quantity` int(11) NOT NULL
+  `Quantity` int(11) NOT NULL,
+  `TimeStart` datetime NOT NULL,
+  `TimeFinish` datetime NOT NULL,
+  `Image1` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `Image2` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `Image3` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `Seller` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `BestBuyer` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `likes` (
+  `LikeID` int(11) UNSIGNED NOT NULL,
+  `Users` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `IDPro` int(11) NOT NULL,
+  `NamePro` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 --
 -- Dumping data for table `products`
@@ -236,6 +253,9 @@ ALTER TABLE `orderdetails`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`OrderID`);
 
+  ALTER TABLE `likes`
+  ADD PRIMARY KEY (`LikeID`);
+
 --
 -- Indexes for table `products`
 --
@@ -247,6 +267,7 @@ ALTER TABLE `products`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`session_id`);
+
 
 --
 -- Indexes for table `user`
@@ -274,6 +295,9 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `orderdetails`
   MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+  ALTER TABLE `likes`
+  MODIFY `LikeID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orders`
 --

@@ -56,7 +56,6 @@ exports.checkEmail = function(entity) {
             'select * from user where email = "{{email}}"',
             entity
         );
-
     db.load(sql).then(function(rows) {
         if (rows.length > 0) {
             var user = {
@@ -72,4 +71,25 @@ exports.checkEmail = function(entity) {
         }
     });
     return deferred.promise;
+}
+exports.loadAllUser = function() {
+
+    var deferred = Q.defer();
+
+    var sql = 'select * from user';
+    db.load(sql).then(function(rows) {
+      
+        deferred.resolve(rows);
+    });
+
+    return deferred.promise;
+}
+
+exports.delete = function(entity) {
+    var sql = mustache.render(
+        'delete from user where id = {{id}}',
+        entity
+    );
+
+    return db.delete(sql);
 }

@@ -1,6 +1,9 @@
 var express = require('express');
 productRepo = require('../models/productRepo');
 
+const Entities = require('html-entities').XmlEntities;
+const entities = new Entities();
+
 var r = express.Router();
 
 r.get('/', function(req, res) {
@@ -32,6 +35,12 @@ r.get('/search/danhmuc/:id', function(req, res) {
 
     productRepo.loadAllByCat(catId)
         .then(function(pRows) {
+            for(var i = 0; i < pRows.length; i++) {
+                pRows[i].FullDes = entities.decode(pRows[i].FullDes);
+                pRows[i].Image1 = entities.decode(pRows[i].Image1);
+                pRows[i].Image2 = entities.decode(pRows[i].Image2);
+                pRows[i].Image3 = entities.decode(pRows[i].Image3);
+            }
             var vm = {
                 layoutVM: res.locals.layoutVM,
                 products: pRows,
@@ -49,6 +58,12 @@ r.get('/search/tukhoa', function(req, res) {
 
     productRepo.loadBySearch(key)
         .then(function(pRows) {
+            for(var i = 0; i < pRows.length; i++) {
+                pRows[i].FullDes = entities.decode(pRows[i].FullDes);
+                pRows[i].Image1 = entities.decode(pRows[i].Image1);
+                pRows[i].Image2 = entities.decode(pRows[i].Image2);
+                pRows[i].Image3 = entities.decode(pRows[i].Image3);
+            }
             var vm = {
                 layoutVM: res.locals.layoutVM,
                 products: pRows,
@@ -56,10 +71,6 @@ r.get('/search/tukhoa', function(req, res) {
             };
             res.render('home/search', vm);
         });
-});
-
-r.get('/category', function(req, res) {
-    res.end('ooops');
 });
 
 module.exports = r;

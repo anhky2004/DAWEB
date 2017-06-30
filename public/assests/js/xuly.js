@@ -6,10 +6,14 @@ $(document).ready(function(){
 	$("#loinhaplaimatkhausai").hide();
 	$("#loimatkhaukhongdu6kitu").hide();
 });
+
+(function() {
+	OAuth.initialize('C4ECEe6yQOF5VeMrgpMKIrxkkRQ');
+})();
+
 function checkEmail(email) {
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (!filter.test(email)) {
-        
         return false;
     }
     else
@@ -39,7 +43,6 @@ function valadateFormLogin(){
 		}
 		return false;
 }
-
 function validateFormRegister(){
 		var v = grecaptcha.getResponse();
 		if($("#email").val()==""){
@@ -55,7 +58,6 @@ function validateFormRegister(){
 			$("#loitendangnhap").hide(500);
 			$("#hoten").focus();
 			$("#loihoten").show(500);
-			
 		}
 		else if($("#password").val()==""){
 			$("#loihoten").hide(500);
@@ -88,8 +90,40 @@ function validateFormRegister(){
 			$("#loinhaplaimatkhausai").hide(500);
 	        return true;
 		}
-	 
 	    return false;
 	}
-
+	function googleLogin() {
+            OAuth.popup('google', function(error, success){
+				var url =  "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + success.access_token;
+				$.ajax({
+                    type: 'GET',
+                    url: url,
+                    async: false,
+                    success: function(userInfo) {
+						$("#email").val(userInfo.email);
+						$("#hoten").val(userInfo.name);
+                    },
+                    error: function(e) {
+                    	console.log('error');
+                    }
+                });
+			});
+	}
+	function facebookLogin() {
+		OAuth.popup('facebook', function(error, success){
+			success.me().done(function(data) {
+    			$("#email").val(data.email);
+				$("#hoten").val(data.name);
+			})	
+		});
+	}
+	function twitterLogin() {
+		OAuth.popup('twitter', function(error, success){
+			success.me().done(function(data) {
+				console.log(data);
+				$("#hoten").val(data.name);
+				$("#email").val(data.alias);
+			})	
+		});
+	}
 

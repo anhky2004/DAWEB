@@ -1,0 +1,33 @@
+
+
+<div class="content" style="display: block;"> 
+    <div style="padding-top: 115px;" class="container">
+        
+
+        <div class="container">
+            <h2>Danh sách các sản phẩm user đang được đấu giá</h2>     
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Sản Phẩm</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá hiện tại</th>
+                    <th>Người bán</th>
+                </tr>
+            </thead>
+            <tbody>
+              {{#each accounts }}
+            <tr>
+                <td>{{ProID}}</td>
+                <td><a href="/product/productDetail/{{ProID}}" style="color:black;">{{ProName}}</a></td>
+                <td>{{Price}}</td>
+                <td>{{Seller}}</td>
+            </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        </div>
+    </div>
+</div>
+</div> <!---end content-->

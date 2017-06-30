@@ -9,7 +9,7 @@
   "author": "1312091-1312092-1412275",
   "license": "ISC",
   "dependencies": {
-     "body-parser": "^1.17.1",
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "express-handlebars-sections": "^1.0.1",
@@ -22,6 +22,7 @@
     "mysql": "^2.13.0",
     "q": "^1.5.0",
     "serve-favicon": "^2.4.3",
-    "wnumb": "^1.1.0"
+    "wnumb": "^1.1.0", 
+    "html-entities": "1.2.1"
   }
 }

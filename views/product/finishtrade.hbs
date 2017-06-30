@@ -1,0 +1,33 @@
+
+
+<div class="content" style="display: block;"> 
+    <div style="padding-top: 115px;" class="container">
+        
+
+        <div class="container">
+            <h2>Danh sách các sản phẩm của user đã đấu giá xong hoặc chưa có ai đấu giá</h2>     
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Sản Pham</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá cao nhất đưa ra</th>
+                    <th>Người đưa ra giá thắng</th>
+                </tr>
+            </thead>
+            <tbody>
+              {{#each products }}
+            <tr>
+                <td>{{ProID}}</td>
+                <td><a href="/product/productDetail/{{ProID}}" style="color:black;">{{ProName}}</a></td>
+                <td>{{Price}}</td>
+                <td>{{BestBuyer}}</td>
+            </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        </div>
+    </div>
+</div>
+</div> <!---end content-->

@@ -9,9 +9,39 @@
 	<script src="/assests/js/productDetail/jquery.easing.1.3.js"></script>
     <script src="/assests/js/productDetail/productDetail.js"></script> 
 	<script src="/assests/js/ckeditor/ckeditor.js"></script>
-	<script>	 
-		CKEDITOR.replace( 'editor1' );	 
-	</script> 
+	<script type="text/javascript">
+	CKEDITOR.replace( 'editor1' );
+
+	$(document).ready(function() {
+		$('.likeProduct').on('click', function() {			
+			$('#likePro').submit();
+		});
+		$("#tab-1").text(htmlDecode($("#tab-1").text().trim()));
+
+		if($("#isLike").val() != "") {
+			$("#likeBtn").css("background-color", "#ff0000");
+		}
+	});
+	function datGia() {
+		if(xacNhanDatGia('Bạn có chắc muốn đặt giá?')) {
+			var a = $('#txtPrice').val();
+			var b = $('#txtPriceNow').val();
+			if(a>b){
+				$('#updatePro').submit();
+			}
+			else{
+				alert("vui lòng nhập giá cao hơn");
+			}
+		}
+		return false;
+	}
+	function xacNhanDatGia(msg){
+		if(window.confirm(msg)){
+			return true;
+		}
+		return false;
+	}
+	</script>
 {{/section}}
 
 {{#section 'css'}}
@@ -20,15 +50,33 @@
 	<link rel="stylesheet" type="text/css" href="/assests/css/productDetail/owl.theme.css"/>
 	<link rel="stylesheet" type="text/css" href="/assests/css/productDetail/owl.transitions.css"/>
 	<link rel="stylesheet" href="/assests/css/productDetail/productDetail.css">
+	<style>
+		.anhnho{
+			width: 150px;
+			height: 150px;
+		}
+	</style>
 {{/section}}
 
-{{#each products }}
 <div class="content" style="display: block;">
+	{{#if layoutModels.isLogged }}
+		<form method="post" action="/product/like" id="likePro">
+				<input id="txtUsers" name="users" value="{{layoutModels.curUser.hoten}}" type="hidden">
+				{{#each products }}
+				<input id="txtProID" name="proid" value="{{ProID}}" type="hidden">
+				<input id="txtProName" name="proname" value="{{ProName}}" type="hidden">
+				<input id="txtPriceNow" name="pricenow" value="{{Price}}" type="hidden">
+			{{/each}}
+		</form>
+	{{else}}
+		
+	{{/if}}
+		{{#each products }}
 		<div  style="padding-top: 115px;" class="sanpham container">
 		<div class="row">
 			<div class="col-md-4">
 	   			 <div class="thumbnail">
-	     			 <img class="img-responsive" src="/assests/Images/tui_1.jpg">
+	     			 <img class="img-responsive" src="{{Image1}}">
 	     			 <div class="caption">
 	     				   <h4></h4>       
 	      			</div>
@@ -38,29 +86,57 @@
 					<h1>{{ProName}}</h1>
 					<div class="col-md-12" style="padding: 0 0 0 0">
 		                <span class="label label-primary">Hcmus</span>
-		                <span class="monospaced">No. {{ProId}}</span>
+		                <span class="monospaced">No. {{ProID}}</span>
 		            </div>			
-					<div>Seller: <a href="#" style="color: #85DB18;">anhkyvo</a></div>
+					<div>Seller: <a href="#" style="color: #85DB18;">{{Seller}}</a></div>
 					
-					<div>Bắt đầu: 21/05/2017 lúc 12:30</div>
-					<div>Kết thúc: 22/05/2017 lúc 13:30</div>
+					<div>Bắt đầu: {{TimeStart}}</div>
+					<div>Kết thúc: {{TimeFinish}}</div>
+					<input id="isLike" value="{{LikeID}}" type="hidden">
 					<div id="demo"></div>
-					<div>Giá hiện tại:<span class="label label-lg label-primary">{{number_format Price}}</span></div>
-					<div>Người đưa ra cao nhất hiện tại: <a href="#" style="color: #85DB18;">anhkhoi</a> </div>	
-					<div>Giá mua ngay: {{number_format Price}}</div>	
-					<div>Điểm đánh giá: </div>
+					<div>Giá hiện tại:<span class="label label-lg label-primary priceNow">{{Price}}</span></div>
+						<input class="form-control" id="timefinish" name="timefinish" value="{{TimeFinish}}" type="hidden">
+					{{/each}}
+
+					{{#if layoutModels.isLogged }}
+						<div class="form-group">
+							<a id="likeBtn" href="javascript:;" class="btn btn-default likeProduct" title="like">	
+								<span class="glyphicon glyphicon-star-empty"> Like</span>
+							</a>
+						</div>
+					{{else}}
+						
+					{{/if}}
 					<div id="dathang">
-						<form action="">
+					{{#if layoutModels.isLogged }}
+						<form action="/product/update" method="post" id="updatePro">
 							<div class="form-group">
-								<input type="text" class="form-control" style="width: 350px;" placeholder="Nhập giá bạn muốn đặt">
+							{{#each products }}
+								<input class="form-control" id="txtPrice" name="price" type="number" style="width: 350px;" value="1" step="10">
+							{{/each}}
+								<input id="txtbestbuyer" name="bestbuyer" value="{{layoutModels.curUser.hoten}}" type="hidden">
+								{{#each products }}
+								<input id="txtProID" name="proid" value="{{ProID}}" type="hidden">
+								<input id="txtquantity" name="quantity" value="{{Quantity}}" type="hidden">
+							{{/each}}
 							</div>
-							<button style="width:350px; height: 50px;" class="btn btn-danger pull-left form-control"><span class="glyphicon glyphicon-shopping-cart"></span> Đặt giá</button>	
+
 						</form>
+					{{else}}
+					{{/if}}
+
+					{{#if layoutModels.isLogged }}
+							<a onclick="return datGia()" style="width:350px; height: 50px;" href="javascript:;"  class="btn btn-danger pull-left updateProduct"><span class="glyphicon glyphicon-shopping-cart"></span> Đặt giá</a>	
 					</div>
+					{{else}}
+
+					{{/if}}
 			</div>
-			<div class="col-md-3">
+
+			{{#each products }}
+			<div class="col-md-3">			
 				<div class="title">
-					Danh sách top đấu giá của sản phẩm
+					Thành viên đấu giá cao nhất
 				</div>
 				<table class="table table-bordered">
 					<thead>
@@ -71,12 +147,8 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>{{number_format Price}}</td>
-							<td>anhkhoi</td>
-						</tr>
-						<tr>
-							<td>{{number_format Price}}</td>
-							<td>kimlien</td>
+							<td>{{Price}}</td>
+							<td>{{BestBuyer}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -91,28 +163,19 @@
 			</ul>
 			
 			<div id="tab-1" class="tab-content current">
-
-				{{ FullDes }}
-				<!-- <ul>
-					<li>Chất liệu Da tổng hợp chống thấm nước, chống bong tróc</li>
-					<li>Đường may tỉ mỉ và tinh xảo, duy trì độ bền đẹp lâu dài</li>
-					<li>Túi gồm 1 ngăn lớn + 3 ngăn nhỏ cho phép cất trữ nhiều vật dụng</li>
-					<li>Ví có thiết kế trẻ trung với dây đeo mảnh</li>
-					<li>Tiết kiệm chi phí tối ưu so với khi mua lẻ từng món</li>
-				</ul> -->
-
-				
+				{{FullDes}}
 			</div>
 			<div id="tab-2" class="tab-content">
 				<div class="hinhanh">
 					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<a href="/assests/Images/tui_1.jpg" rel="motnhom"><img class="anhnho" src="/assests/Images/tui_1.jpg" alt=""></a>
+						<a href="{{Image1}}" rel="motnhom"><img class="anhnho" src="{{Image1}}" alt=""></a>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<a href="/assests/Images/tui_1.jpg" rel="motnhom"><img class="anhnho" src="/assests/Images/tui_1.jpg" alt=""></a>
+
+						<a href="{{Image2}}" rel="motnhom"><img class="anhnho" src="{{Image2}}" alt=""></a>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-						<a href="/assests/Images/tui_1.jpg" rel="motnhom"><img class="anhnho" src="/assests/Images/tui_1.jpg" alt=""></a>
+						<a href="{{Image3}}" rel="motnhom"><img class="anhnho" src="{{Image3}}" alt=""></a>
 					</div>
 					
 				</div>
@@ -132,23 +195,24 @@
 	</div>
 	{{/each}}
 	<div class="container sanphamcungloai">
-	
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h3>Có thể bạn quan tâm</h3>
           	<div id="owl-demo1">
 	          	{{#each layoutVM.products4 }}
-				<div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>{{ProName}}</div>
-				<!-- <div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>Túi Đeo Chéo Nam Thời Trang D267D (Đen)  </div>
-				<div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>Túi xách nữ thời trang DT1039 (Tím)  </div>
-				<div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>Túi xách nữ thời trang DT1039 (Xanh)  </div>
-				<div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>Túi nữ thời trang phong cách Hàn quốc HQ205955 -3 (Đen)  </div>
-				<div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>Túi Đeo Chéo Nam Thời Trang D267N (Nâu)  </div>
-				<div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>Túi xách nữ thời trang DT1039 (Ghi)  </div>
-				<div class="item1"><a href="#"><img src="/assests/Images/tui_1.jpg" alt="Owl Image"></a>Túi nam da bò thật TNA01 cung cấp bởi THỜI TRANG DA  </div> -->
+					<div class="item1"><a href="#"><img src="{{Image1}} " alt="Owl Image"></a>{{ProName}}</div>
 				{{/each}}
 			</div>
 		</div>
-	
 	</div>
 	</div>
+
+	<script type="text/javascript">
+		function htmlEncode(value){
+		  return $('<div/>').text(value).html();
+		}
+		function htmlDecode(value){
+		  return $('<div/>').html(value).text();
+		}
+
+	</script>
 

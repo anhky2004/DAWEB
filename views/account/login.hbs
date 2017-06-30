@@ -4,6 +4,7 @@
 	<title>Login</title>
 	<script type="text/javascript" src="/assests/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/assests/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assests/js/oauth-js-master/dist/oauth.js"></script>
 	<script type="text/javascript" src="/assests/js/xuly.js"></script>
 	<link rel="stylesheet" type="text/css" href="/assests/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/assests/css/quangdungStyle.css">
@@ -41,10 +42,18 @@
 				</form>
 			</div>
 			<div class="col-md-6 col-sm-12 col-xs-12">
-				<p id="fist">Hoặc có thể đăng nhập với tài khoản mạng xã hội mà không cần đăng ký</p>
-				<a href="#"><i class="fa fa-facebook-official fa-2x" aria-hidden="true" id="logoface" ></i><span class="dnnhanh">Facebook</span></a>
-				<span id="hoac">hoặc</span>
-				<a href="#"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true" id="logogg"></i><span class="dnnhanhgg">Google</span></a>
+				<p id="fist">Lấy thông tin từ mạng xã hội</p>
+				<div style="display:inline;" onclick="facebookLogin()"><i class="fa fa-facebook-official fa-2x" aria-hidden="true" id="logoface" ></i>
+						<span class="dnnhanh">Facebook</span>
+					</div>
+					<span id="hoac">hoặc</span>
+					<div style="display: inline;" onclick="googleLogin()"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true" id="logogg"></i>
+						<span class="dnnhanhgg">Google</span>
+					</div>
+					<span id="hoac">hoặc</span>
+					<div style="display: inline;" onclick="twitterLogin()"><i class="fa fa-twitter-square fa-2x" aria-hidden="true" id="logott"></i>
+						<span class="dnnhanhtt">Twitter</span>
+				</div>
 				<p id="dangky"><i class="fa fa-pencil-square" aria-hidden="true" id="dk"></i><span id="dkmoi">Đăng ký mới</span></p>
 				<p>Hãy bắt đầu ngay bây giờ. Đăng ký nhanh chóng và dễ dàng trên TAKA.VN</p>
 				<button type="button" class="btn btn-primary" id="dangky"><a href="./register">Đăng Ký</a></button>	
